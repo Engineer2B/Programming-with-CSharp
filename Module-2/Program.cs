@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Runtime.CompilerServices;
 
 /*
 For this assignment, you will create the pattern of a chess board that is 8 x 8.
@@ -27,9 +28,21 @@ Grading Criteria:
 */
 namespace Module_2
 {
-    class Program
+    static class Program
     {
         static void Main(string[] args)
+        {
+            Console.WriteLine("Me:");
+            myAnswer();
+            Console.WriteLine("Peer 1:");
+            peer1Answer();
+            Console.WriteLine("Peer 2:");
+            peer2Answer();
+            Console.WriteLine("Peer 3:");
+            peer3Answer();
+            Console.ReadLine();
+        }
+        private static void myAnswer()
         {
             for (int indexRow = 1; indexRow <= 8; indexRow++)
             {
@@ -60,7 +73,71 @@ namespace Module_2
                 }
                 Console.WriteLine();
             }
-            Console.ReadLine();
+        }
+
+        private static void peer1Answer()
+        {
+            //for easy changing symbols
+            char mX = 'X';
+            char mO = 'O';
+
+            //for easy changing board size
+            int maxI = 8;
+            int maxJ = 8;
+
+            for (int i = 0; i < maxI; i++)
+            {
+                for (int j = 0; j < maxJ; j++)
+                    if ((i + j) % 2 == 0) Console.Write(mX);
+                    else Console.Write(mO);
+                //new line
+                Console.Write('\n');
+            }
+        }
+
+        private static void peer2Answer()
+        {
+            int i, n, move;
+            //loop to make the columns
+            for (i = 0; i < 9; i++)
+            {
+                if (i % 1 == 0)
+                {
+                    move = 1;
+                }
+                else
+                {
+                    move = 0;
+                }
+                for (n = 1; n < 9; n++)
+                {
+                    if (n % 2 == move)
+                    {
+                        Console.Write("O");
+                    }
+                    else
+                    {
+                        Console.Write("X");
+                    }
+                }
+                Console.WriteLine();
+            }
+        }
+
+        private static void peer3Answer()
+        {
+            int x = 0;
+            string line1 = "XOXOXOXO";
+            string line2 = "OXOXOXOX";
+
+            while (x < 8)
+            {
+                if ((x % 2) == 0)
+                    Console.WriteLine(line1);
+                else
+                    Console.WriteLine(line2);
+                x++;
+            }
         }
     }
 }

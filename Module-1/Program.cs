@@ -62,7 +62,7 @@ Use the appropriate code to assign the values from the user to the variables for
 */
 namespace Programming_with_CSharp
 {
-    class Program
+    static class Program
     {
         static void Main(string[] args)
         {
