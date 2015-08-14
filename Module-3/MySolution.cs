@@ -6,13 +6,13 @@ namespace Module_3
     {
         public static void Main()
         {
-            GetStudentInformation();
-            GetTeacherInformation();
-            GetCourseInformation();
-            GetUProgramInformation();
-            GetDegreeInformation();
+            MySolution.GetStudentInformation();
+            MySolution.GetTeacherInformation();
+            MySolution.GetCourseInformation();
+            MySolution.GetUProgramInformation();
+            MySolution.GetDegreeInformation();
             Console.ReadLine();
-            validateBirthDay("July 4 2005");
+            MySolution.validateBirthDay("July 4 2005");
         }
 
         private static void GetStudentInformation()
@@ -23,7 +23,7 @@ namespace Module_3
             string lastName = Console.ReadLine();
             Console.WriteLine("Enter the student's birth date:");
             string birthDay = Console.ReadLine();
-            PrintStudentDetails(firstName, lastName, birthDay);
+            MySolution.PrintStudentDetails(firstName, lastName, birthDay);
         }
 
         private static void PrintStudentDetails(string first, string last, string birthday)
@@ -39,7 +39,7 @@ namespace Module_3
             string lastName = Console.ReadLine();
             Console.WriteLine("Enter the teacher's birth date:");
             string birthDay = Console.ReadLine();
-            PrintTeacherDetails(firstName, lastName, birthDay);
+            MySolution.PrintTeacherDetails(firstName, lastName, birthDay);
         }
 
         private static void PrintTeacherDetails(string first, string last, string birthday)
@@ -55,7 +55,7 @@ namespace Module_3
             string code = Console.ReadLine();
             Console.WriteLine("Enter your grade for this course:");
             string grade = Console.ReadLine();
-            PrintCourseDetails(name, code, grade);
+            MySolution.PrintCourseDetails(name, code, grade);
         }
 
         private static void PrintCourseDetails(string name, string code, string grade)
@@ -71,7 +71,7 @@ namespace Module_3
             string code = Console.ReadLine();
             Console.WriteLine("Enter your grade for this program:");
             string grade = Console.ReadLine();
-            PrintUProgramDetails(name, code, grade);
+            MySolution.PrintUProgramDetails(name, code, grade);
         }
 
         private static void PrintUProgramDetails(string name, string code, string grade)
@@ -87,7 +87,7 @@ namespace Module_3
             string code = Console.ReadLine();
             Console.WriteLine("Enter your grade for this degree:");
             string grade = Console.ReadLine();
-            PrintDegreeDetails(name, code, grade);
+            MySolution.PrintDegreeDetails(name, code, grade);
         }
 
         private static void PrintDegreeDetails(string name, string code, string grade)
