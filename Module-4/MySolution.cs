@@ -15,41 +15,40 @@
             Console.WriteLine("Birth day: {0}", students[0].BirthDay);
             Console.ReadLine();
         }
-    }
+        public struct Student
+        {
+            public string FirstName;
 
-    public struct Student
-    {
-        public string FirstName;
+            public string LastName;
 
-        public string LastName;
+            public string BirthDay;
+        }
 
-        public string BirthDay;
-    }
+        public struct Teacher
+        {
+            public string FirstName;
 
-    public struct Teacher
-    {
-        public string FirstName;
+            public string LastName;
 
-        public string LastName;
+            public string BirthDay;
+        }
 
-        public string BirthDay;
-    }
+        public struct SchoolProgram
+        {
+            public string Name;
 
-    public struct SchoolProgram
-    {
-        public string Name;
+            public string Code;
 
-        public string Code;
+            public string Grade;
+        }
 
-        public string Grade;
-    }
+        public struct Course
+        {
+            public string Name;
 
-    public struct Course
-    {
-        public string Name;
+            public string Code;
 
-        public string Code;
-
-        public string Grade;
+            public string Grade;
+        }
     }
 }
