@@ -11,7 +11,7 @@
             {
                 new Student("Oerry","G' Brien","January 23"),
                 new Student("Berry","G' Orien","January 3"),
-                new Student("Berry","O' Grien","January 13"),
+                new Student("Berry","O' Grien","January 13")
             };
             var course = new Course("Programming with C#","DEV204x");
 

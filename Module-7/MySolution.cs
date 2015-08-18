@@ -1,21 +1,48 @@
-﻿namespace Module_6
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace Module_7
 {
-    using System;
+    using System.Collections;
     using System.Threading;
 
     public class MySolution
     {
         public static void Main()
         {
-            var students = new Student[]
-            {
-                new Student("Oerry","G' Brien","January 23"),
-                new Student("Berry","G' Orien","January 3"),
-                new Student("Berry","O' Grien","January 13")
-            };
-            var course = new Course("Programming with C#", "DEV204x");
+            var studentA = new Student("Oerry", "G' Brien", "January 23");
+            studentA.Grades = new Stack();
+            studentA.Grades.Push(6.5);
+            studentA.Grades.Push(8.1);
+            studentA.Grades.Push(6.5);
+            studentA.Grades.Push(7.6);
+            studentA.Grades.Push(7);
+            var studentB = new Student("Berry", "G' Orien", "January 3");
+            studentB.Grades = new Stack();
+            studentB.Grades.Push(6.5);
+            studentB.Grades.Push(8.1);
+            studentB.Grades.Push(6.5);
+            studentB.Grades.Push(4.6);
+            studentB.Grades.Push(8);
+            var studentC = new Student("Berry", "O' Grien", "January 13");
+            studentC.Grades = new Stack();
+            studentC.Grades.Push(6.5);
+            studentC.Grades.Push(8.1);
+            studentC.Grades.Push(6.5);
+            studentC.Grades.Push(4.6);
+            studentC.Grades.Push(8);
 
-            course.Students = students;
+
+            var course = new Course("Programming with C#", "DEV204x");
+            course.Students = new ArrayList();
+            course.Students.Add(studentA);
+            course.Students.Add(studentB);
+            course.Students.Add(studentC);
+
+            course.ListStudents();
 
             var teacher = new Teacher("Gerry", "B' Orien", "January 31");
 
@@ -64,9 +91,11 @@
         public string BirthDay { get; set; }
     }
 
-    public class Student: Person
+    public class Student : Person
     {
         public static int StudentCount;
+
+        public Stack Grades { get; set; }
 
         public Student(
             string firstName,
@@ -109,7 +138,7 @@
         public string[] Answers { get; set; }
     }
 
-    public class Teacher: Person
+    public class Teacher : Person
     {
         public Teacher(
             string firstName,
@@ -172,7 +201,7 @@
 
         public string Code { get; set; }
 
-        public Student[] Students { get; set; }
+        public ArrayList Students { get; set; }
 
         public Teacher[] Teachers { get; set; }
 
@@ -182,6 +211,16 @@
         {
             this.Name = name;
             this.Code = code;
+        }
+
+        public void ListStudents()
+        {
+            Console.WriteLine("Enlisted are the following students:");
+            foreach (Student student in this.Students)
+            {
+                Console.WriteLine(student.FirstName + " " + student.LastName);
+            }
+            Console.WriteLine("Enlisted, the preceding students are.\n");
         }
     }
 }
