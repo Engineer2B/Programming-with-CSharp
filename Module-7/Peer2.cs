@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Module_7.Peer2
+namespace Module_7
 {
     using System.Collections;
 
@@ -37,57 +37,57 @@ namespace Module_7.Peer2
             Course1.ListStudents();
             Console.ReadKey();
         }
-    }
-    class Student
-    {
-        private string _sname;
-        public string SName
+        class Student
         {
-            get
+            private string _sname;
+            public string SName
             {
-                return _sname;
+                get
+                {
+                    return _sname;
+                }
+                set
+                {
+                    if (value != null)
+                        _sname = value;
+                }
             }
-            set
+            public Student(string _sname)
             {
-                if (value != null)
-                    _sname = value;
+                this.SName = _sname;
             }
+            public Stack Grades = new Stack();
         }
-        public Student(string _sname)
-        {
-            this.SName = _sname;
-        }
-        public Stack Grades = new Stack();
-    }
 
-    class Course
-    {
-        private string _cname;
-        public string CName
+        class Course
         {
-            get
+            private string _cname;
+            public string CName
             {
-                return _cname;
+                get
+                {
+                    return _cname;
+                }
+                set
+                {
+                    if (value != null)
+                        _cname = value;
+                }
             }
-            set
+            public Course() { }
+
+            public Course(string _cname)
             {
-                if (value != null)
-                    _cname = value;
+                this.CName = _cname;
             }
-        }
-        public Course() { }
-
-        public Course(string _cname)
-        {
-            this.CName = _cname;
-        }
-        public ArrayList Students = new ArrayList();
-        public void ListStudents()
-        {
-            foreach (Student newstudent in Students)
+            public ArrayList Students = new ArrayList();
+            public void ListStudents()
             {
+                foreach (Student newstudent in Students)
+                {
 
-                Console.WriteLine(newstudent.SName);
+                    Console.WriteLine(newstudent.SName);
+                }
             }
         }
     }

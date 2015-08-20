@@ -78,148 +78,147 @@ namespace Module_8
                 Student.StudentCount);
             Console.ReadLine();
         }
-    }
-
-    public class Person
-    {
-        public string FirstName { get; set; }
-
-        public string LastName { get; set; }
-
-        public string BirthDay { get; set; }
-    }
-
-    public class Student : Person
-    {
-        public static int StudentCount;
-
-        public Stack<double> Grades { get; set; }
-
-        public Student(
-            string firstName,
-            string lastName,
-            string birthDay)
+        public class Person
         {
-            base.FirstName = firstName;
-            base.LastName = lastName;
-            base.BirthDay = birthDay;
-            Student.StudentCount++;
+            public string FirstName { get; set; }
+
+            public string LastName { get; set; }
+
+            public string BirthDay { get; set; }
         }
 
-        public Test TakeTest(string[] questions, string codeTest, string nameTest)
+        public class Student : Person
         {
-            var studentTest = new Test();
-            studentTest.Answers = new string[questions.Length];
-            studentTest.Code = codeTest;
-            studentTest.Name = nameTest;
-            for (int i = 0; i < questions.Length; i++)
+            public static int StudentCount;
+
+            public Stack<double> Grades { get; set; }
+
+            public Student(
+                string firstName,
+                string lastName,
+                string birthDay)
             {
-                Console.WriteLine(string.Format("Q{0}) {1}: ", i.ToString(), questions[i]));
-                studentTest.Answers[i] = Console.ReadLine();
-                Console.WriteLine();
+                base.FirstName = firstName;
+                base.LastName = lastName;
+                base.BirthDay = birthDay;
+                Student.StudentCount++;
             }
-            return studentTest;
-        }
 
-        public void ChangeGrade(double newGrade)
-        {
-            this.Grades.Pop();
-            this.Grades.Push(newGrade);
-        }
-    }
-
-    public class Test
-    {
-        public string Name { get; set; }
-
-        public string Code { get; set; }
-
-        public string[] Answers { get; set; }
-    }
-
-    public class Teacher : Person
-    {
-        public Teacher(
-            string firstName,
-            string lastName,
-            string birthDay)
-        {
-            base.FirstName = firstName;
-            base.LastName = lastName;
-            base.BirthDay = birthDay;
-        }
-
-        public int GradeTest(Test test)
-        {
-            return this.parseAnswers(test.Answers);
-        }
-
-        public int parseAnswers(string[] answers)
-        {
-            throw new NotImplementedException("This method is not yet implemented!");
-        }
-    }
-
-    public class UProgram
-    {
-        public string Name { get; set; }
-
-        public string Code { get; set; }
-
-        public Degree[] Degrees { get; set; }
-
-        public UProgram(
-            string name,
-            string code)
-        {
-            this.Name = name;
-            this.Code = code;
-        }
-    }
-
-    public class Degree
-    {
-        public string Name { get; set; }
-
-        public string Code { get; set; }
-
-        public Course[] Courses { get; set; }
-
-        public Degree(
-            string name,
-            string code)
-        {
-            this.Name = name;
-            this.Code = code;
-        }
-    }
-
-    public class Course
-    {
-        public string Name { get; set; }
-
-        public string Code { get; set; }
-
-        public List<Student> Students { get; set; }
-
-        public Teacher[] Teachers { get; set; }
-
-        public Course(
-            string name,
-            string code)
-        {
-            this.Name = name;
-            this.Code = code;
-        }
-
-        public void ListStudents()
-        {
-            Console.WriteLine("Enlisted are the following students:");
-            foreach (var student in this.Students)
+            public Test TakeTest(string[] questions, string codeTest, string nameTest)
             {
-                Console.WriteLine(student.FirstName + " " + student.LastName);
+                var studentTest = new Test();
+                studentTest.Answers = new string[questions.Length];
+                studentTest.Code = codeTest;
+                studentTest.Name = nameTest;
+                for (int i = 0; i < questions.Length; i++)
+                {
+                    Console.WriteLine(string.Format("Q{0}) {1}: ", i.ToString(), questions[i]));
+                    studentTest.Answers[i] = Console.ReadLine();
+                    Console.WriteLine();
+                }
+                return studentTest;
             }
-            Console.WriteLine("Enlisted, the preceding students are.\n");
+
+            public void ChangeGrade(double newGrade)
+            {
+                this.Grades.Pop();
+                this.Grades.Push(newGrade);
+            }
+        }
+
+        public class Test
+        {
+            public string Name { get; set; }
+
+            public string Code { get; set; }
+
+            public string[] Answers { get; set; }
+        }
+
+        public class Teacher : Person
+        {
+            public Teacher(
+                string firstName,
+                string lastName,
+                string birthDay)
+            {
+                base.FirstName = firstName;
+                base.LastName = lastName;
+                base.BirthDay = birthDay;
+            }
+
+            public int GradeTest(Test test)
+            {
+                return this.parseAnswers(test.Answers);
+            }
+
+            public int parseAnswers(string[] answers)
+            {
+                throw new NotImplementedException("This method is not yet implemented!");
+            }
+        }
+
+        public class UProgram
+        {
+            public string Name { get; set; }
+
+            public string Code { get; set; }
+
+            public Degree[] Degrees { get; set; }
+
+            public UProgram(
+                string name,
+                string code)
+            {
+                this.Name = name;
+                this.Code = code;
+            }
+        }
+
+        public class Degree
+        {
+            public string Name { get; set; }
+
+            public string Code { get; set; }
+
+            public Course[] Courses { get; set; }
+
+            public Degree(
+                string name,
+                string code)
+            {
+                this.Name = name;
+                this.Code = code;
+            }
+        }
+
+        public class Course
+        {
+            public string Name { get; set; }
+
+            public string Code { get; set; }
+
+            public List<Student> Students { get; set; }
+
+            public Teacher[] Teachers { get; set; }
+
+            public Course(
+                string name,
+                string code)
+            {
+                this.Name = name;
+                this.Code = code;
+            }
+
+            public void ListStudents()
+            {
+                Console.WriteLine("Enlisted are the following students:");
+                foreach (var student in this.Students)
+                {
+                    Console.WriteLine(student.FirstName + " " + student.LastName);
+                }
+                Console.WriteLine("Enlisted, the preceding students are.\n");
+            }
         }
     }
 }

@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Module_8.Peer1
+namespace Module_8
 {
     public class Peer1
     {
@@ -50,73 +50,73 @@ namespace Module_8.Peer1
             course.ListStudents();
 
         }
-    }
-    public class Course
-    {
-        private string name;
-        private List<Teacher> teacherlist = new List<Teacher>();
-        private List<Student> students = new List<Student>();
+        public class Course
+        {
+            private string name;
+            private List<MySolution.Teacher> teacherlist = new List<MySolution.Teacher>();
+            private List<Student> students = new List<Student>();
 
-        public Course(string coursename)
-        {
-            this.name = coursename;
-        }
-
-        public string _Name
-        {
-            get { return name; }
-            set { name = value; }
-        }
-        internal List<Student> _Students
-        {
-            get { return students; }
-            set { students = value; }
-        }
-        internal List<Teacher> _Teacherlist
-        {
-            get { return teacherlist; }
-            set { teacherlist = value; }
-        }
-
-        public void AddStudent(Student s)
-        {
-            students.Add(s);
-        }
-        public void AddTeacher(Teacher t)
-        {
-            teacherlist.Add(t);
-        }
-        public void ListTeachers()
-        {
-            foreach (Teacher t in teacherlist)
+            public Course(string coursename)
             {
-                Console.WriteLine("{0} {1}", t.FirstName, t.LastName);
+                this.name = coursename;
+            }
+
+            public string _Name
+            {
+                get { return name; }
+                set { name = value; }
+            }
+            internal List<Student> _Students
+            {
+                get { return students; }
+                set { students = value; }
+            }
+            internal List<MySolution.Teacher> _Teacherlist
+            {
+                get { return teacherlist; }
+                set { teacherlist = value; }
+            }
+
+            public void AddStudent(Student s)
+            {
+                students.Add(s);
+            }
+            public void AddTeacher(MySolution.Teacher t)
+            {
+                teacherlist.Add(t);
+            }
+            public void ListTeachers()
+            {
+                foreach (MySolution.Teacher t in teacherlist)
+                {
+                    Console.WriteLine("{0} {1}", t.FirstName, t.LastName);
+                }
+            }
+            public void ListStudents()
+            {
+                foreach (Student s in students)
+                {
+                    Console.WriteLine("{0} {1}", s.FirstName, s.LastName);
+                }
             }
         }
-        public void ListStudents()
+
+        public class Student : MySolution.Person
         {
-            foreach (Student s in students)
+            public static int StudentsInSchool = 0;
+            public Stack<int> Grades { get; set; }
+
+            // Constructor, calls base constructor for Person.
+            public Student(string firstName, string lastName, DateTime birthdate)
             {
-                Console.WriteLine("{0} {1}", s.FirstName, s.LastName);
+                Grades = new Stack<int>();
+                StudentsInSchool++;
             }
-        }
-    }
 
-    public class Student : Person
-    {
-        public static int StudentsInSchool = 0;
-        public Stack<int> Grades { get; set; }
-
-        // Constructor, calls base constructor for Person.
-        public Student(string firstName, string lastName, DateTime birthdate)
-        {
-            Grades = new Stack<int>();
-            StudentsInSchool++;
-        }
-
-        void TakeTest()
-        {
-            Console.WriteLine("Test taken.");
+            void TakeTest()
+            {
+                Console.WriteLine("Test taken.");
+            }
         }
     }
 }

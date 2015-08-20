@@ -11,9 +11,9 @@ namespace Module_8
         static void Main(string[] args)
         {
             MySolution.Main();
-            Peer1.Peer1.Main();
-            Peer2.Peer2.Main();
-            Peer3.Peer3.Main();
+            Peer1.Main();
+            Peer2.Main();
+            Peer3.Main();
         }
     }
 }

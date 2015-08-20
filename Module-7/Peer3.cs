@@ -2,7 +2,7 @@
 using System;
 using System.Collections;
 
-namespace Module_7.Peer3
+namespace Module_7
 {
     public class Peer3
     {
@@ -28,64 +28,64 @@ namespace Module_7.Peer3
             course.ListStudents();
             Console.ReadLine();
         }
-    }
-    public class Student
-    {
-        public Student(string first, string last)
+        public class Student
         {
-            this.FirstName = first;
-            this.LastName = last;
-            Student.NumberOfStudents++;
-            this.Grades = new Stack();
-        }
-
-        public void AddGrade(int grade)
-        {
-            Grades.Push(grade);
-        }
-
-
-        public static int NumberOfStudents = 0;
-        public Stack Grades;
-
-        public string FirstName { get; set; }
-        public string LastName { get; set; }
-        public DateTime Birth { get; set; }
-        public string Address1 { get; set; }
-        public string Address2 { get; set; }
-        public string City { get; set; }
-        public string State { get; set; }
-        public int Zip { get; set; }
-        public string Country { get; set; }
-    }
-
-    public class Course
-    {
-        public Course(string name)
-        {
-            this.courseName = name;
-            this.students = new ArrayList();
-            //this.teachers = new Teacher[3];
-        }
-
-        public ArrayList students;
-        //public Teacher[] teachers;
-
-        public string courseName { get; set; }
-        public int courseCredits { get; set; }
-        public int courseDuration { get; set; }
-        public string courseTeacher { get; set; }
-
-        public void AddStudent(Student student)
-        {
-            students.Add(student);
-        }
-
-        public void ListStudents()
-        {
-            foreach (Student student in students)
+            public Student(string first, string last)
             {
-                Console.WriteLine("Student {0} {1} is here", student.FirstName, student.LastName);
+                this.FirstName = first;
+                this.LastName = last;
+                Student.NumberOfStudents++;
+                this.Grades = new Stack();
+            }
+
+            public void AddGrade(int grade)
+            {
+                Grades.Push(grade);
+            }
+
+
+            public static int NumberOfStudents = 0;
+            public Stack Grades;
+
+            public string FirstName { get; set; }
+            public string LastName { get; set; }
+            public DateTime Birth { get; set; }
+            public string Address1 { get; set; }
+            public string Address2 { get; set; }
+            public string City { get; set; }
+            public string State { get; set; }
+            public int Zip { get; set; }
+            public string Country { get; set; }
+        }
+
+        public class Course
+        {
+            public Course(string name)
+            {
+                this.courseName = name;
+                this.students = new ArrayList();
+                //this.teachers = new Teacher[3];
+            }
+
+            public ArrayList students;
+            //public Teacher[] teachers;
+
+            public string courseName { get; set; }
+            public int courseCredits { get; set; }
+            public int courseDuration { get; set; }
+            public string courseTeacher { get; set; }
+
+            public void AddStudent(Student student)
+            {
+                students.Add(student);
+            }
+
+            public void ListStudents()
+            {
+                foreach (Student student in students)
+                {
+                    Console.WriteLine("Student {0} {1} is here", student.FirstName, student.LastName);
+                }
             }
         }
     }

@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Module_8.Peer2
+namespace Module_8
 {
     class Peer2
     {

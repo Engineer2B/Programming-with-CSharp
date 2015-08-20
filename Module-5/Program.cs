@@ -62,7 +62,7 @@ namespace Module_5
         static void Main(string[] args)
         {
             MySolution.Main();
-            Peer1.Peer1.Main();
+            Peer1.Main();
         }
     }
 }
