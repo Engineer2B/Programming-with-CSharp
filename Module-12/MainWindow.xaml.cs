@@ -17,91 +17,100 @@ using System.IO;
 
 namespace Module_12
 {
-    ///// <summary>
-    ///// Interaction logic for MainWindow.xaml
-    ///// </summary>
-    //public partial class MainWindow : Window
-    //{
-    //    public MainWindow()
-    //    {
-    //        this.InitializeComponent();
-    //    }
+    #region My solution
 
-    //    private void btnWriteFile_Click(object sender, RoutedEventArgs e)
-    //    {
-    //        this.WriteFileAsync();
-    //    }
+    /// <summary>
+    /// Interaction logic for MainWindow.xaml
+    /// </summary>
+    public partial class MainWindow : Window
+    {
+        public MainWindow()
+        {
+            this.InitializeComponent();
+        }
 
-    //    private void btnReadFile_Click(object sender, RoutedEventArgs e)
-    //    {
-    //        this.ReadFileAsync();
-    //    }
+        private void btnWriteFile_Click(object sender, RoutedEventArgs e)
+        {
+            this.WriteFileAsync();
+        }
 
-    //    public async void WriteFileAsync()
-    //    {
-    //        string filePath = @"SampleFile.txt";
-    //        string text = this.txtContents.Text;
-    //        await this.WriteTextAsync(filePath, text);
-    //    }
+        private void btnReadFile_Click(object sender, RoutedEventArgs e)
+        {
+            this.ReadFileAsync();
+        }
 
-    //    private async Task WriteTextAsync(string filePath, string text)
-    //    {
-    //        byte[] encodedText = Encoding.Unicode.GetBytes(text);
+        public async void WriteFileAsync()
+        {
+            string filePath = @"SampleFile.txt";
+            string text = this.txtContents.Text;
+            await this.WriteTextAsync(filePath, text);
+        }
 
-    //        using (FileStream sourceStream = new FileStream(filePath,
-    //            FileMode.Append, FileAccess.Write, FileShare.None,
-    //            bufferSize: 4096, useAsync: true))
-    //        {
-    //            await sourceStream.WriteAsync(encodedText, 0, encodedText.Length);
-    //        }
-    //    }
+        private async Task WriteTextAsync(string filePath, string text)
+        {
+            byte[] encodedText = Encoding.Unicode.GetBytes(text);
 
-    //    public async void ReadFileAsync()
-    //    {
-    //        string filePath = @"SampleFile.txt";
+            using (FileStream sourceStream = new FileStream(filePath,
+                FileMode.Append, FileAccess.Write, FileShare.None,
+                bufferSize: 4096, useAsync: true))
+            {
+                await sourceStream.WriteAsync(encodedText, 0, encodedText.Length);
+            }
+        }
 
-    //        if (File.Exists(filePath) == false)
-    //        {
-    //            MessageBox.Show(filePath + " not found", "File Error", MessageBoxButton.OK);
-    //        }
-    //        else
-    //        {
-    //            try
-    //            {
-    //                string text = await this.ReadTextAsync(filePath);
-    //                this.txtContents.Text = text;
-    //            }
-    //            catch (Exception ex)
-    //            {
-    //                Debug.WriteLine(ex.Message);
-    //            }
-    //        }
-    //    }
+        public async void ReadFileAsync()
+        {
+            string filePath = @"SampleFile.txt";
 
-    //    private async Task<string> ReadTextAsync(string filePath)
-    //    {
-    //        using (FileStream sourceStream = new FileStream(filePath,
-    //            FileMode.Open, FileAccess.Read, FileShare.Read,
-    //            bufferSize: 4096, useAsync:true))
-    //        {
-    //            StringBuilder sb = new StringBuilder();
+            if (File.Exists(filePath) == false)
+            {
+                MessageBox.Show(filePath + " not found", "File Error", MessageBoxButton.OK);
+            }
+            else
+            {
+                try
+                {
+                    string text = await this.ReadTextAsync(filePath);
+                    this.txtContents.Text = text;
+                }
+                catch (Exception ex)
+                {
+                    Debug.WriteLine(ex.Message);
+                }
+            }
+        }
 
-    //            byte[] buffer = new byte[0x1000];
-    //            Task<int> numRead;
-    //            while (await (numRead = sourceStream.ReadAsync(buffer, 0, buffer.Length)) != 0)
-    //            {
-    //                string text = Encoding.Unicode.GetString(buffer, 0, numRead.Result);
-    //                sb.Append(text);
-    //            }
+        private async Task<string> ReadTextAsync(string filePath)
+        {
+            using (FileStream sourceStream = new FileStream(filePath,
+                FileMode.Open, FileAccess.Read, FileShare.Read,
+                bufferSize: 4096, useAsync: true))
+            {
+                StringBuilder sb = new StringBuilder();
 
-    //            return sb.ToString();
-    //        }
-    //    }
-    //}
+                byte[] buffer = new byte[0x1000];
+                Task<int> numRead;
+                while (await (numRead = sourceStream.ReadAsync(buffer, 0, buffer.Length)) != 0)
+                {
+                    string text = Encoding.Unicode.GetString(buffer, 0, numRead.Result);
+                    sb.Append(text);
+                }
+
+                return sb.ToString();
+            }
+        }
+    }
+
+    #endregion
+
+
+    #region Peer 1
+
     // Peer 1
     /// <summary>
     /// Interaction logic for MainWindow.xaml
     /// </summary>
+
     //public partial class MainWindow : Window
     //{
     //    public MainWindow()
@@ -181,10 +190,15 @@ namespace Module_12
     //        }
     //    }
     //}
+
+    #endregion
+
+    #region Peer2
+
+    // Peer 2
     /// <summary>
     /// Interaction logic for MainWindow.xaml
     /// </summary>
-    // Peer 2
     //public partial class MainWindow : Window
     //{
     //    public MainWindow()
@@ -264,86 +278,93 @@ namespace Module_12
     //        }
     //    }
     //}
+
+    #endregion
+
+    #region Peer3
+
+    // Peer 3
     /// <summary>
     /// Interaction logic for MainWindow.xaml
     /// </summary>
-    public partial class MainWindow : Window
-    {
-        public MainWindow()
-        {
-            InitializeComponent();
-        }
+    //public partial class MainWindow : Window
+    //{
+    //    public MainWindow()
+    //    {
+    //        InitializeComponent();
+    //    }
 
-        private void btnWriteFile_Click(object sender, RoutedEventArgs e)
-        {
-            WriteFile();
-        }
+    //    private void btnWriteFile_Click(object sender, RoutedEventArgs e)
+    //    {
+    //        WriteFile();
+    //    }
 
-        private void btnReadFile_Click(object sender, RoutedEventArgs e)
-        {
-            ReadFile();
-        }
+    //    private void btnReadFile_Click(object sender, RoutedEventArgs e)
+    //    {
+    //        ReadFile();
+    //    }
 
-        public async void WriteFile()
-        {
-            string filePath = @"SampleFile.txt";
-            string text = txtContents.Text;
+    //    public async void WriteFile()
+    //    {
+    //        string filePath = @"SampleFile.txt";
+    //        string text = txtContents.Text;
 
-            await WriteTextAsync(filePath, text);
-        }
+    //        await WriteTextAsync(filePath, text);
+    //    }
 
-        private async Task WriteTextAsync(string filePath, string text)
-        {
-            byte[] encodedText = Encoding.Unicode.GetBytes(text);
+    //    private async Task WriteTextAsync(string filePath, string text)
+    //    {
+    //        byte[] encodedText = Encoding.Unicode.GetBytes(text);
 
-            using (FileStream sourceStream = new FileStream(filePath,
-            FileMode.Append, FileAccess.Write, FileShare.None,
-            bufferSize: 4096, useAsync: true))
-            {
-                await sourceStream.WriteAsync(encodedText, 0, encodedText.Length);
-            };
-        }
+    //        using (FileStream sourceStream = new FileStream(filePath,
+    //        FileMode.Append, FileAccess.Write, FileShare.None,
+    //        bufferSize: 4096, useAsync: true))
+    //        {
+    //            await sourceStream.WriteAsync(encodedText, 0, encodedText.Length);
+    //        };
+    //    }
 
-        public async void ReadFile()
-        {
-            string filePath = @"SampleFile.txt";
+    //    public async void ReadFile()
+    //    {
+    //        string filePath = @"SampleFile.txt";
 
-            if (File.Exists(filePath) == false)
-            {
-                MessageBox.Show(filePath + " not found", "File Error", MessageBoxButton.OK);
-            }
-            else
-            {
-                try
-                {
-                    string text = await ReadTextAsync(filePath);
-                    txtContents.Text = text;
-                }
-                catch (Exception ex)
-                {
-                    Debug.WriteLine(ex.Message);
-                }
-            }
-        }
+    //        if (File.Exists(filePath) == false)
+    //        {
+    //            MessageBox.Show(filePath + " not found", "File Error", MessageBoxButton.OK);
+    //        }
+    //        else
+    //        {
+    //            try
+    //            {
+    //                string text = await ReadTextAsync(filePath);
+    //                txtContents.Text = text;
+    //            }
+    //            catch (Exception ex)
+    //            {
+    //                Debug.WriteLine(ex.Message);
+    //            }
+    //        }
+    //    }
 
-        private async Task<string> ReadTextAsync(string filePath)
-        {
-            using (FileStream sourceStream = new FileStream(filePath,
-            FileMode.Open, FileAccess.Read, FileShare.Read,
-            bufferSize: 4096, useAsync: true))
-            {
-                StringBuilder sb = new StringBuilder();
+    //    private async Task<string> ReadTextAsync(string filePath)
+    //    {
+    //        using (FileStream sourceStream = new FileStream(filePath,
+    //        FileMode.Open, FileAccess.Read, FileShare.Read,
+    //        bufferSize: 4096, useAsync: true))
+    //        {
+    //            StringBuilder sb = new StringBuilder();
 
-                byte[] buffer = new byte[0x1000];
-                int numRead;
-                while ((numRead = await sourceStream.ReadAsync(buffer, 0, buffer.Length)) != 0)
-                {
-                    string text = Encoding.Unicode.GetString(buffer, 0, numRead);
-                    sb.Append(text);
-                }
+    //            byte[] buffer = new byte[0x1000];
+    //            int numRead;
+    //            while ((numRead = await sourceStream.ReadAsync(buffer, 0, buffer.Length)) != 0)
+    //            {
+    //                string text = Encoding.Unicode.GetString(buffer, 0, numRead);
+    //                sb.Append(text);
+    //            }
 
-                return sb.ToString();
-            }
-        }
-    }
+    //            return sb.ToString();
+    //        }
+    //    }
+    //}
+    #endregion
 }
